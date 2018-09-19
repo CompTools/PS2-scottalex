@@ -1,5 +1,14 @@
 Problem Set 2
 
+# How many delayed flights?
+## Delayed departures
+awk -F, '{if($3~"GNV" && $13==1){print $13}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "departuredelays=" s}'
+
+## Delayed arrivals
+awk -F, '{if($7~"GNV" && $16==1){print $16}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "arrivaldelays=" s}'
+
+
 #1
 ### Departure delay from Gainesville
 awk -F, '{if($3~"GNV" && $13==1){print $13}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "departuredelays=" s}'
+
