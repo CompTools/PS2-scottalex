@@ -1,4 +1,4 @@
-Problem Set 2
+# All code. In a single bash shell named flights.sh on ufrc/zoo6927/apotash 
 
 # How many delayed flights?
 ## Delayed departures
@@ -8,7 +8,15 @@ awk -F, '{if($3~"GNV" && $13==1){print $13}}' flights.May2017-Apr2018.csv | awk 
 awk -F, '{if($7~"GNV" && $16==1){print $16}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "arrivaldelays=" s}'
 
 
+# How many flights from GNV to other airports
+## to ATL
+awk -F, '{if($7~"GNV" && $3~"ATL"){print $7}}' flights.May2017-Apr2018.csv | wc -l
 
+## to CLT
+awk -F, '{if($7~"GNV" && $3~"CLT"){print $7}}' flights.May2017-Apr2018.csv | wc -l
+
+## to MIA
+awk -F, '{if($7~"GNV" && $3~"MIA"){print $7}}' flights.May2017-Apr2018.csv | wc -l
 
 
 # How many flights delayed from GNV to other airports
