@@ -1,42 +1,61 @@
-# All code. In a single bash shell named flights.sh on ufrc/zoo6927/apotash 
-
 # How many delayed flights?
 ## Delayed departures
 awk -F, '{if($3~"GNV" && $13==1){print $13}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "departuredelays=" s}'
 
+echo ""
+
 ## Delayed arrivals
 awk -F, '{if($7~"GNV" && $16==1){print $16}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "arrivaldelays=" s}'
 
+echo ""
 
 # How many flights from GNV to other airports
 ## to ATL
-awk -F, '{if($7~"GNV" && $3~"ATL"){print $7}}' flights.May2017-Apr2018.csv | wc -l
+
+echo How many flights from GNV to other airports?
+
+awk -F, '{if($7~"GNV" && $3~"ATL"){print $7}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoATL
+
+echo ""
 
 ## to CLT
-awk -F, '{if($7~"GNV" && $3~"CLT"){print $7}}' flights.May2017-Apr2018.csv | wc -l
+awk -F, '{if($7~"GNV" && $3~"CLT"){print $7}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoCLT
+
+echo ""
 
 ## to MIA
-awk -F, '{if($7~"GNV" && $3~"MIA"){print $7}}' flights.May2017-Apr2018.csv | wc -l
+awk -F, '{if($7~"GNV" && $3~"MIA"){print $7}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoMIA
 
+echo ""
+echo How many flights delayed from GNV to other airports
 
-# How many flights delayed from GNV to other airports
 ## to ATL
-awk -F, '{if($7~"GNV" && $3~"ATL" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l
+awk -F, '{if($7~"GNV" && $3~"ATL" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoATL
+
+echo ""
 
 ## to CLT
-awk -F, '{if($7~"GNV" && $3~"CLT" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l
+awk -F, '{if($7~"GNV" && $3~"CLT" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoCLT
+
+echo ""
 
 ## to MIA
-awk -F, '{if($7~"GNV" && $3~"MIA" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l
+awk -F, '{if($7~"GNV" && $3~"MIA" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoMIA
+
+echo ""
+echo How many flights delayed due to weather from GNV to other airports
 
 
-
-# How many flights delayed due to weather from GNV to other airports
 ## to ATL
-awk -F, '{if($7~"GNV" && $3~"ATL" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l
+awk -F, '{if($7~"GNV" && $3~"ATL" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoATL
+
+echo ""
 
 ## to CLT
-awk -F, '{if($7~"GNV" && $3~"CLT" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l
+awk -F, '{if($7~"GNV" && $3~"CLT" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoCLT
+
+echo ""
 
 ## to MIA
-awk -F, '{if($7~"GNV" && $3~"MIA" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l
+awk -F, '{if($7~"GNV" && $3~"MIA" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l && echo GNVtoMIA
+
