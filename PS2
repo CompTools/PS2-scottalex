@@ -1,0 +1,5 @@
+Problem Set 2
+
+#1
+### Departure delay from Gainesville
+awk -F, '{if($3~"GNV" && $13==1){print $13}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "departuredelays=" s}'
