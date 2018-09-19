@@ -8,7 +8,27 @@ awk -F, '{if($3~"GNV" && $13==1){print $13}}' flights.May2017-Apr2018.csv | awk 
 awk -F, '{if($7~"GNV" && $16==1){print $16}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "arrivaldelays=" s}'
 
 
-#1
-### Departure delay from Gainesville
-awk -F, '{if($3~"GNV" && $13==1){print $13}}' flights.May2017-Apr2018.csv | awk '{s+=$1}END{print "departuredelays=" s}'
 
+
+
+# How many flights delayed from GNV to other airports
+## to ATL
+awk -F, '{if($7~"GNV" && $3~"ATL" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l
+
+## to CLT
+awk -F, '{if($7~"GNV" && $3~"CLT" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l
+
+## to MIA
+awk -F, '{if($7~"GNV" && $3~"MIA" && $13==1){print}}' flights.May2017-Apr2018.csv | wc -l
+
+
+
+# How many flights delayed due to weather from GNV to other airports
+## to ATL
+awk -F, '{if($7~"GNV" && $3~"ATL" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l
+
+## to CLT
+awk -F, '{if($7~"GNV" && $3~"CLT" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l
+
+## to MIA
+awk -F, '{if($7~"GNV" && $3~"MIA" && $24>0){print}}' flights.May2017-Apr2018.csv | wc -l
