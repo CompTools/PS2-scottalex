@@ -75,3 +75,9 @@ echo Florida airport
 
 awk -F, '{if($5~"FL"){print$4}}' flights.May2017-Apr2018.csv | sort | uniq
 
+
+# Bonus Question
+
+echo "Enter an airport name or state or city >"
+read x
+awk -v pat=$x -F, '{if($3~pat||$4~pat||$5~pat){print}}' testflights.txt | wc -l
